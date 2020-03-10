@@ -37,6 +37,11 @@ body{
 .box-inscricao .title{
     color: rgb(29, 105, 29);
 }
+.box-inscricao .title-h2{
+    color: rgb(105, 105, 105);
+    font-size: 17px;
+    margin-top: 20px;
+}
 .box-inscricao form{
     width: 80%;
 }
@@ -94,7 +99,8 @@ body{
     grid-template-columns: 1fr;
     justify-items: center;
     margin-top: 100px;
-    background: rgb(4, 29, 0);
+    background: rgb(4, 29, 0) url('../assets/background-image.png') no-repeat bottom;
+    background-size: 100%;
     width: 100vw;
     min-height: 300px;
     padding: 20px;
@@ -102,9 +108,13 @@ body{
 }
 .box-info-event a{
     text-decoration: none;
-    color: #fff;
+    color: rgb(65,238,162);
 }
 .box-info-event h1{
+    font-size: 50px;
+    margin-top: 20px;
+}
+.box-info-event h2{
     font-size: 50px;
     margin-top: 20px;
 }
@@ -128,6 +138,18 @@ body{
 }
 .info-especific .data{
     font-size: 20px;
+    color: rgb(65,238,162)
+}
+.box-content-inscricoes{
+    border-top: 1px solid #ddd;    
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.box-content-inscricoes .inscricao{
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    margin: 10px 0px;
 }
 @media(max-width: 800px)
 {

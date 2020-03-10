@@ -23,12 +23,13 @@ function Home()
         })
         .then(response => {
             const { message, status, erro } = response.data;
-            if(status != "ok")
+            if(status !== "ok")
             {
                 setStyleMessage("response erro")
+                setHandleBtnConfirm("Erro ao cadastrar")
                 console.log(erro)
             }
-            setHandleBtnConfirm("Salvando dados")
+            setHandleBtnConfirm("Confirmar presença")
             setMessageInscricao(message)
         })
         .catch(error => {
@@ -40,9 +41,10 @@ function Home()
         <div id="app">
             <div className="box-inscricao">
                 <figure className="logo">
-                    <img src={imgLogo}/>
+                    <img src={imgLogo} alt=""/>
                 </figure>
-                <h1 className="title">Curso de pregação</h1>
+                <h1 className="title">Inscrição</h1>
+                <h2 className="title-h2">Curso de preparação e Apresentação de sermões</h2>
                 <Form onSubmit={handleSubmit} method="post">
                     <div className="box-form">
                         <div className="fields-form">
@@ -73,21 +75,21 @@ function Home()
                 <div className="info-event">
                     <div className="info-especific">
                         <div className="label-info">
-                            <img src={iconCalendar}/>
+                            <img src={iconCalendar} alt=""/>
                             Data
                         </div>
                         <span className="data">22/03/2020</span>
                     </div>
                     <div className="info-especific">
                         <div className="label-info">
-                            <img src={iconHours}/>
+                            <img src={iconHours} alt=""/>
                             Horário
                         </div>
                         <span className="data">15:30</span>
                     </div>
                     <div className="info-especific">
                         <div className="label-info">
-                            <img src={iconLocation}/>
+                            <img src={iconLocation} alt=""/>
                             Local
                         </div>
                         <span className="data"><a href='https://goo.gl/maps/a6sSZxeZqzNchz1L6' target="_blank">Igreja Adventista do Sétimo Dia Central</a></span>

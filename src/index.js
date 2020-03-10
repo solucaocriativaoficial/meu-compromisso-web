@@ -1,5 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './components/Home';
+import {BrowserRouter} from 'react-router-dom';
+import RouterLinks from './routes';
 
-ReactDOM.render(<Home />, document.getElementById('root'));
+ReactDOM.render(
+    <BrowserRouter>
+        <RouterLinks />
+    </BrowserRouter>
+, document.getElementById('root'));
