@@ -206,4 +206,7 @@ body{
     .info-especific .data{
         margin-top: 10px;
     }
+    .box-info-event{
+        background-size: 200%;
+    }
 }
