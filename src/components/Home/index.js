@@ -9,7 +9,7 @@ function Home()
 {
     const [ styleMessage, setStyleMessage ] = useState("response");
     const [messageInscricao, setMessageInscricao] =useState();
-    const [handleBtnConfirm, setHandleBtnConfirm] = useState("Confirma presença");
+    const [handleBtnConfirm, setHandleBtnConfirm] = useState("Confirmar presença");
     function handleSubmit(data)
     {
         setHandleBtnConfirm("Salvando dados")
