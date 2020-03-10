@@ -3,16 +3,18 @@ import '../../styles/Main.css';
 import imgLogo from '../../assets/logo-igreja.svg'
 import { Form } from '@unform/web';
 import Input from '../Form/Input';
-import axios from 'axios';
+import api from '../../Services/api';
 
 function Home()
 {
     const [ styleMessage, setStyleMessage ] = useState("response");
     const [messageInscricao, setMessageInscricao] =useState();
+    const [handleBtnConfirm, setHandleBtnConfirm] = useState("Confirma presença");
     function handleSubmit(data)
     {
+        setHandleBtnConfirm("Salvando dados")
         const {complete_name, city} = data;
-        axios.post("https://meu-compromisso-backend.herokuapp.com/cursopregacao/add", {
+        api.post("/cursopregacao/add", {
             complete_name: complete_name,
             city: city
         })
@@ -23,6 +25,7 @@ function Home()
                 setStyleMessage("response erro")
                 console.log(erro)
             }
+            setHandleBtnConfirm("Salvando dados")
             setMessageInscricao(message)
         })
         .catch(error => {
@@ -55,7 +58,7 @@ function Home()
                         </datalist>
                     </div>
                     <div className="fields-form">
-                        <button type="submit">Confirmar presença</button>
+                        <button type="submit">{handleBtnConfirm}</button>
                     </div>
                     <div className={styleMessage}>{messageInscricao}</div>
                 </div>
