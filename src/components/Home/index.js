@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import '../../styles/Main.css';
 import imgLogo from '../../assets/logo-igreja.svg'
+import iconLocation from '../../assets/icon-location.png';
+import iconHours from '../../assets/icon-hours.png';
+import iconCalendar from '../../assets/icon-calendar.png';
 import { Form } from '@unform/web';
 import Input from '../Form/Input';
 import api from '../../Services/api';
@@ -35,34 +38,62 @@ function Home()
     }
     return(
         <div id="app">
-            <figure className="logo">
-                <img src={imgLogo}/>
-            </figure>
-            <h1 className="title">Curso de pregação</h1>
-            <Form onSubmit={handleSubmit} method="post">
-                <div className="box-form">
-                    <div className="fields-form">
-                        <label for="complete_name">Nome completo <em>*</em></label>
-                        <Input name="complete_name" required/>
+            <div className="box-inscricao">
+                <figure className="logo">
+                    <img src={imgLogo}/>
+                </figure>
+                <h1 className="title">Curso de pregação</h1>
+                <Form onSubmit={handleSubmit} method="post">
+                    <div className="box-form">
+                        <div className="fields-form">
+                            <label for="complete_name">Nome completo <em>*</em></label>
+                            <Input name="complete_name" required/>
+                        </div>
+                        <div className="fields-form">
+                            <label for="city">Cidade <em>*</em></label>
+                            <Input name="city" list="churc-list" required/>
+                            <datalist id="churc-list">
+                                <option>Comodoro</option>
+                                <option>Noroagro</option>
+                                <option>Campos de Júlio</option>
+                                <option>Consquista do Oeste</option>
+                                <option>Nova lacerda</option>
+                                <option>Santa Helina</option>
+                            </datalist>
+                        </div>
+                        <div className="fields-form">
+                            <button type="submit">{handleBtnConfirm}</button>
+                        </div>
+                        <div className={styleMessage}>{messageInscricao}</div>
                     </div>
-                    <div className="fields-form">
-                        <label for="city">Cidade <em>*</em></label>
-                        <Input name="city" list="churc-list" required/>
-                        <datalist id="churc-list">
-                            <option>Comodoro</option>
-                            <option>Noroagro</option>
-                            <option>Campos de Júlio</option>
-                            <option>Consquista do Oeste</option>
-                            <option>Nova lacerda</option>
-                            <option>Santa Helina</option>
-                        </datalist>
+                </Form>
+            </div>
+            <div className="box-info-event">
+                <h1>INFORMAÇÕES</h1>
+                <div className="info-event">
+                    <div className="info-especific">
+                        <div className="label-info">
+                            <img src={iconCalendar}/>
+                            Data
+                        </div>
+                        <span className="data">22/03/2020</span>
                     </div>
-                    <div className="fields-form">
-                        <button type="submit">{handleBtnConfirm}</button>
+                    <div className="info-especific">
+                        <div className="label-info">
+                            <img src={iconHours}/>
+                            Horário
+                        </div>
+                        <span className="data">15:30</span>
                     </div>
-                    <div className={styleMessage}>{messageInscricao}</div>
+                    <div className="info-especific">
+                        <div className="label-info">
+                            <img src={iconLocation}/>
+                            Local
+                        </div>
+                        <span className="data"><a href='https://goo.gl/maps/a6sSZxeZqzNchz1L6' target="_blank">Igreja Adventista do Sétimo Dia Central</a></span>
+                    </div>
                 </div>
-            </Form>
+            </div>
         </div>
     )
 }
