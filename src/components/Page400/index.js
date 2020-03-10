@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../../styles/Main.css';
 import imgLogo from '../../assets/logo-igreja.svg'
 import { Link } from 'react-router-dom';

@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import '../../styles/Main.css';
 import imgLogo from '../../assets/logo-igreja.svg'
-import iconLocation from '../../assets/icon-location.png';
-import iconHours from '../../assets/icon-hours.png';
-import iconCalendar from '../../assets/icon-calendar.png';
 import api from '../../Services/api';
+import Footer from '../Footer';
 
 async function getData()
 {
@@ -15,12 +14,15 @@ async function getData()
 function List()
 {
     const [dados, setDados] = useState([]);
-    useEffect( async () => {
-        const response = await getData();
-        if(response.status===200)
-        {
-            setDados(response.data)
+    useEffect(() => {
+        async function getDataPromisse(){
+            const response = await getData();
+            if(response.status===200)
+            {
+                setDados(response.data)
+            }
         }
+        getDataPromisse();
     },[])
 
     return(
@@ -33,7 +35,7 @@ function List()
                 <h2 className="title-h2">Pessoas inscritas</h2>
                 <div className="box-content-inscricoes">
                     {
-                        dados.length == 0 ? "Nenhum registro encontrado!":
+                        dados.length === 0 ? "Carregando dados...":
                         dados.map(inscribe =>
                         <div className="inscricao">
                             <div>{ inscribe.complete_name}</div>
@@ -41,33 +43,11 @@ function List()
                         </div>)
                     }
                 </div>
-            </div>
-            <div className="box-info-event">
-                <h1>INFORMAÇÕES</h1>
-                <div className="info-event">
-                    <div className="info-especific">
-                        <div className="label-info">
-                            <img src={iconCalendar} alt=""/>
-                            Data
-                        </div>
-                        <span className="data">22/03/2020</span>
-                    </div>
-                    <div className="info-especific">
-                        <div className="label-info">
-                            <img src={iconHours} alt=""/>
-                            Horário
-                        </div>
-                        <span className="data">15:30</span>
-                    </div>
-                    <div className="info-especific">
-                        <div className="label-info">
-                            <img src={iconLocation} alt=""/>
-                            Local
-                        </div>
-                        <span className="data"><a href='https://goo.gl/maps/a6sSZxeZqzNchz1L6' target="_blank">Igreja Adventista do Sétimo Dia Central</a></span>
-                    </div>
+                <div className="links">
+                    <Link to="/" id="listInscribe">Voltar para página inicial</Link>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }

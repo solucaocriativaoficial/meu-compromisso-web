@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 import '../../styles/Main.css';
 import imgLogo from '../../assets/logo-igreja.svg'
-import iconLocation from '../../assets/icon-location.png';
-import iconHours from '../../assets/icon-hours.png';
-import iconCalendar from '../../assets/icon-calendar.png';
 import { Form } from '@unform/web';
 import Input from '../Form/Input';
 import api from '../../Services/api';
+import Footer from '../Footer'
 
 function Home()
 {
@@ -66,36 +65,14 @@ function Home()
                         <div className="fields-form">
                             <button type="submit">{handleBtnConfirm}</button>
                         </div>
+                        <div className="links">
+                            <Link to="/list" id="listInscribe">Lista de inscritos</Link>
+                        </div>
                         <div className={styleMessage}>{messageInscricao}</div>
                     </div>
                 </Form>
             </div>
-            <div className="box-info-event">
-                <h1>INFORMAÇÕES</h1>
-                <div className="info-event">
-                    <div className="info-especific">
-                        <div className="label-info">
-                            <img src={iconCalendar} alt=""/>
-                            Data
-                        </div>
-                        <span className="data">22/03/2020</span>
-                    </div>
-                    <div className="info-especific">
-                        <div className="label-info">
-                            <img src={iconHours} alt=""/>
-                            Horário
-                        </div>
-                        <span className="data">15:30</span>
-                    </div>
-                    <div className="info-especific">
-                        <div className="label-info">
-                            <img src={iconLocation} alt=""/>
-                            Local
-                        </div>
-                        <span className="data"><a href='https://goo.gl/maps/a6sSZxeZqzNchz1L6' target="_blank">Igreja Adventista do Sétimo Dia Central</a></span>
-                    </div>
-                </div>
-            </div>
+            <Footer/>
         </div>
     )
 }
